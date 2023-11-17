@@ -1,6 +1,7 @@
 import azure.functions as func
 import requests
 import os
+import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     currencies = req.params.get('currencies')
