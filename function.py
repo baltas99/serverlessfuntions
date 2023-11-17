@@ -8,7 +8,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
              "Please pass one or more currencies in the query string",
              status_code=400
-        )
+        ) 
 
     # Use your API key from currencylayer.com
     api_key = os.environ.get('CURRENCY_LAYER_API_KEY')
