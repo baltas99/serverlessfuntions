@@ -13,7 +13,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Use your API key from currencylayer.com
     api_key = os.environ.get('CURRENCY_LAYER_API_KEY')
     url = f'http://apilayer.net/api/live?access_key={api_key}&currencies={currencies}&format=1'
-
+    
     response = requests.get(url)
     data = response.json()
 
