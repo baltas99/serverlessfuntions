@@ -34,7 +34,7 @@ jobs:
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
         with:
-          app-name: 'Forex521' # Replace with your Azure Function App name
+          app-name: 'forex522 (forex521/forex522)' # Replace with your Azure Function App name
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_784F12FCB5F244BF9826EAC9B72DB1E7 }}
           package: release.zip
           scm-do-build-during-deployment: true # You might not need this if you're deploying a Python function that doesn't require building on Azure
