@@ -22,11 +22,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     response = requests.get(url)
     data = response.json()
 
-    if response.status_code == 200 and 'quotes' in data:
-        # Extract the exchange rates from the response data
-        rates = {currency[3:]: rate for currency, rate in data['quotes'].items() if currency.startswith(base_currency)}
-        return func.HttpResponse(json.dumps({'rates': rates}), mimetype="application/json")
-    else:
-        # It's a good practice to return the error from the external API
-        error_message = data.get('error', {}).get('info', 'Failed to fetch the exchange rates')
-        return func.HttpResponse(error_message, status_code=response.status_code
+  if response.status_code == 200 and 'quotes' in data:
+    # The API returns keys like 'EURGBP', 'EURCAD', etc.
+    # We need to remove the source currency from the beginning of these keys
+    source_prefix = f"{base_currency}"  # e.g., "EUR"
+    rates = {currency[len(source_prefix):]: rate for currency, rate in data['quotes'].items()}
+
+    return func.HttpResponse(json.dumps({'rates': rates}), mimetype="application/json")
+else:
+    # It's a good practice to return the error from the external API
+    error_message = data.get('error', {}).get('info', 'Failed to fetch the exchange rates')
+    return func.HttpResponse(error_message, status_code=response.status_code)
