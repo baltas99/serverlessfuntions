@@ -37,5 +37,5 @@ jobs:
           app-name: 'Forex521' # Replace with your Azure Function App name
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_784F12FCB5F244BF9826EAC9B72DB1E7 }}
           package: release.zip
-          scm-do-build-during-deployment: false # You might not need this if you're deploying a Python function that doesn't require building on Azure
-          enable-oryx-build: false # Same as above, disable if not needed
+          scm-do-build-during-deployment: true # You might not need this if you're deploying a Python function that doesn't require building on Azure
+          enable-oryx-build: true
