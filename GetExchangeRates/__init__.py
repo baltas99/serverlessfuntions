@@ -17,7 +17,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # Use your API key from currencylayer.com
     api_key = os.environ.get('CURRENCY_LAYER_API_KEY')
     # Construct the API request URL with the base and target currencies
-    url = f"http://apilayer.net/api/live?access_key={api_key}&currencies={target_currencies}&source={base_currency}&format=1"
+    url = f"https://apilayer.net/api/live?access_key={api_key}&currencies={currencies}&source={base_currency}&format=1"
 
     response = requests.get(url)
     data = response.json()
