@@ -5,7 +5,7 @@ import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     # Get the base and target currencies from the query parameters
-    base_currency = req.params.get('base', 'USD')  # Default to 'USD' if no base is provided
+    base_currency = req.params.get('source', 'USD')  # Default to 'USD' if no base is provided
     target_currencies = req.params.get('currencies')
 
     if not target_currencies:
